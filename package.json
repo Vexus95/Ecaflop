@@ -1,0 +1,22 @@
+{
+  "name": "ecaflop",
+  "version": "1.0.0",
+  "description": "Goal: write end-to-end browser integration tests for a web application",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vexus95/Ecaflop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vexus95/Ecaflop/issues"
+  },
+  "homepage": "https://github.com/Vexus95/Ecaflop#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "@types/node": "^22.12.0"
+  }
+}
