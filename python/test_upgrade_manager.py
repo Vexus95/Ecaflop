@@ -1,4 +1,5 @@
 def test_upgrade_manager(reset_db,page):
+    
      # Create an employee 
     page.goto("/")
     page.goto("/add_employee")
