@@ -1,9 +1,4 @@
-def test_create_team(page):
-    # Make sure db is empty
-    page.goto("/reset_db")
-    proceed_button = page.locator("button:has-text('proceed')")
-    proceed_button.click()
-
+def test_create_team(reset_db, page):
     # Create a team 
     page.goto("/")
     page.goto("/add_team")
@@ -26,3 +21,4 @@ def test_create_team(page):
 
     # check teams
     page.goto("/teams")
+    assert not page.is_visible(f"td:has-text('{team_name}')")
