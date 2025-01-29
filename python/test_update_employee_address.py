@@ -35,7 +35,6 @@ def test_create_team(page):
     job_title = "dev"
     name_input.fill(job_title)
 
-
     page.click("text='Add'")
 
     # Goto the team list
@@ -43,3 +42,28 @@ def test_create_team(page):
 
     # Check the new team is there
     assert page.is_visible(f"td:has-text('{name}')")
+
+
+    # Update the date 
+    page.click("text='Edit'")
+    page.click("text='Update address'")
+
+    name_input = page.locator('input[name="address_line1"]')
+    address = "test town updated"
+    name_input.fill(address)
+
+    page.click("text='Update'")
+
+    page.click("text='Update address'")
+
+    address_line1_input = page.locator('input[name="address_line1"]')
+    assert address_line1_input.input_value() == "test town updated"
+
+    # Verify address_line2 is empty
+    address_line2_input = page.locator('input[name="address_line2"]')
+    assert address_line2_input.input_value() == "", "Le champ address 2 doit être vide"
+
+
+
+
+
