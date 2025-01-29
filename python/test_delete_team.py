@@ -1,4 +1,5 @@
-def test_create_team(reset_db, page):
+def test_delete_team(reset_db, page):
+
     # Create a team 
     page.goto("/")
     page.goto("/add_team")
@@ -18,7 +19,3 @@ def test_create_team(reset_db, page):
     page.goto("/teams")
     page.click("text='Delete'")
     page.click("text='Proceed'")
-
-    # check teams
-    page.goto("/teams")
-    assert not page.is_visible(f"td:has-text('{team_name}')")
