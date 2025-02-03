@@ -1,21 +1,18 @@
-# def test_delete_team(reset_db, page):
+from models.add_team_page import AddTeamPage
+from models.teams_page import TeamsPage
 
-#     # Create a team 
-#     page.goto("/")
-#     page.goto("/add_team")
-#     name_input = page.locator('input[name="name"]')
-#     team_name = "my team"
-#     name_input.fill(team_name)
-#     page.click("text='Add'")
+def test_delete_team(reset_db, page):
+    team_name = "my team"
+    
+    add_team_page = AddTeamPage(page)
+    teams_page = TeamsPage(page)
 
-#     # Goto the team list
-#     page.goto("/teams")
+    add_team_page.go_to_add_team_page()
+    add_team_page.create_team(team_name)
 
-#     # Check the new team is there
-#     assert page.is_visible(f"td:has-text('{team_name}')")
+    teams_page.go_to_teams_page()
+    assert teams_page.check_team_exists(team_name)
 
-#     # delete a team 
-#     page.goto("/")
-#     page.goto("/teams")
-#     page.click("text='Delete'")
-#     page.click("text='Proceed'")
+    teams_page.delete_team()
+
+    assert not teams_page.check_team_exists(team_name)
