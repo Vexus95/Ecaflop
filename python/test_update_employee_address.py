@@ -1,8 +1,13 @@
+from models.add_team_page import AddTeamPage
+from models.teams_page import TeamsPage
+
 def test_create_team(reset_db, page):
 
+    add_team_page = AddTeamPage(page)
+    teams_page = TeamsPage(page)
+
     # Create an employee 
-    page.goto("/")
-    page.goto("/add_employee")
+    add_team_page.go_to_add_team_page()
     name_input = page.locator('input[name="name"]')
     name = "john snow"
     name_input.fill(name)
@@ -34,8 +39,8 @@ def test_create_team(reset_db, page):
     page.click("text='Add'")
 
     # Goto the team list
-    page.goto("/employees")
-
+    teams_page.go_to_teams_page()
+    
     # Check the new team is there
     assert page.is_visible(f"td:has-text('{name}')")
 
