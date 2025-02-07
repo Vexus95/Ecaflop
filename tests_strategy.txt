@@ -1,0 +1,8 @@
+When I am done I don’t clean up
+Probleme : Le premier test passe pour créer une team puisque la bbd est vide, mais les tests suivants échoueront car la team est déjà créée
+Les solutions : générer des teams différentes en générant un nom aléatoire à chaque test pour qu’une nouvelle team soit mis à jour dans la bdd cela permet d’éviter l’erreur sans reset la bdd, inconvénients : saturation de la bdd suite à un grand nombre de tests
+Avantages : pas besoin de reset la bdd à chaque test, permet de garder une trace écrite de chaque test
+Autre solution : faire un rallback de la bdd à chaque fois que le test est lancé, 
+Avantages : ça impact pas directement la bdd pas de problème de saturation, 
+Inconvénients : implémentation longue si le framework n’a pas l’option de rallback
+
